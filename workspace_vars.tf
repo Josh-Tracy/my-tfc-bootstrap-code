@@ -8,7 +8,7 @@ resource "tfe_variable" "tfvars" {
   hcl          = try(tostring(each.value), "nostring") == "nostring" ? true : false
   sensitive    = false
   category     = "terraform"
-    lifecycle {
+  lifecycle {
     ignore_changes = [
       value,
       sensitive,
@@ -26,7 +26,7 @@ resource "tfe_variable" "tfvars_sensitive" {
   hcl          = try(tostring(each.value), "nostring") == "nostring" ? true : false
   sensitive    = true
   category     = "terraform"
-    lifecycle {
+  lifecycle {
     ignore_changes = [
       value,
       sensitive,

@@ -1,5 +1,5 @@
 provider "tfe" {
-  token = var.tfc_token
+  token    = var.tfc_token
   hostname = var.hostname
   # Configuration options
 }
@@ -10,15 +10,18 @@ module "vending-ws" {
   for_each = var.workspaces
 
   # Find each value for the defined keys.count
-  ws          = each.value.name
-  org         = each.value.org
-  project_id  = each.value.project_id
-  team_access = each.value.team_access
+  ws                = each.value.name
+  org               = each.value.org
+  project_id        = each.value.project_id
+  team_access       = each.value.team_access
+  auto_apply        = each.value.auto_apply
+  queue_all_runs    = each.value.queue_all_runs
+  working_directory = each.value.working_directory
 
   tfvars = {
     teststring = "iamstring"
     #testlist   = ["1", "2", "3"]
-    testmap    = { "a" = "1", "b" = "2", "c" = { "nest1key" = "nest1value" } }
+    testmap = { "a" = "1", "b" = "2", "c" = { "nest1key" = "nest1value" } }
   }
 
   tfvars_sensitive = {

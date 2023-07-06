@@ -4,6 +4,30 @@ variable "ws" {
   default     = ""
 }
 
+variable "working_directory" {
+  type        = string
+  description = "working directory within the VCS repo"
+  default     = ""
+}
+
+variable "auto_apply" {
+  type        = bool
+  description = "auto apply or not"
+  default     = false
+}
+
+variable "queue_all_runs" {
+  type        = bool
+  description = "que all runs or not"
+  default     = true
+}
+
+variable "vcs_repo" {
+  type        = map(string)
+  description = "Map of settings to connect Workspace to VCS repository."
+  default     = {}
+}
+
 variable "team" {
   type        = string
   description = "team name"

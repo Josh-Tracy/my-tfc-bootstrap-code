@@ -1,5 +1,5 @@
 provider "tfe" {
-  token = var.tfc_token
+  token    = var.tfc_token
   hostname = var.hostname
   # Configuration options
 }
@@ -32,5 +32,12 @@ module "vending-varsets" {
   varset_envvars_sensitive = {
     AWS_SECRET_ACCESS_KEY = "THI$ISNOTAREALSECRETKEY123!@#"
     AWS_SESSION_TOKEN     = "THI$ISNOTAREALSESSIONTOKEN123456789$%^&*"
+  }
+
+  vcs_repo = {
+    identifier     = "Josh-Tracy/my-tfc-bootstrap-code"
+    branch         = "main"
+    oauth_token_id = var.oauth_token_id
+    tags_regex     = null # conflicts with `trigger_prefixes` and `trigger_patterns`
   }
 }
